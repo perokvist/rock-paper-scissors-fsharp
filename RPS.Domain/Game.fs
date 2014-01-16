@@ -1,11 +1,10 @@
-﻿module RPS.FSharp
+﻿module Game
 open System
 
 type Event = 
     interface
     end
-
-
+    
 type Move=
   | Rock
   | Paper
