@@ -27,7 +27,7 @@ type CreateGameCommand={
     playerName: string
     firstMove: Move
     name:string
-    id:Guid
+    id:string
 }
 
 type GameState=
@@ -80,7 +80,7 @@ let createGame (command:CreateGameCommand) state : list<Event> =
 type MakeMoveCommand = {
     move:Move
     playerName:string
-    id:Guid
+    id:string
 }
 
 let isValidPlayer playerName state =

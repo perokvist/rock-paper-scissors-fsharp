@@ -1,7 +1,7 @@
 ﻿module RPS.GameHandler
 
 open Microsoft.FSharp.Collections
-open RPS.FSharp
+open Game
 
 let eventStore = [("a",[{GameCreatedEvent.playerName="per";name="stanley cup"} :> Event;{MoveMadeEvent.playerName="per";MoveMadeEvent.move=Move.Rock} :> Event])] |> Map.ofList
 
