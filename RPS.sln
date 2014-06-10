@@ -1,9 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "RPS.Domain", "RPS.Domain\RPS.Domain.fsproj", "{18D2055A-A591-4F1C-9983-4F1BC86ED571}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPS.Domain.Tests", "RPS.Domain.Tests\RPS.Domain.Tests.csproj", "{E3720455-F8E9-43B8-88AC-B0B00BD96B1D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{0B7D6108-C032-44B3-A55B-61797BA2F14C}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +22,10 @@ Global
 		{18D2055A-A591-4F1C-9983-4F1BC86ED571}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18D2055A-A591-4F1C-9983-4F1BC86ED571}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18D2055A-A591-4F1C-9983-4F1BC86ED571}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3720455-F8E9-43B8-88AC-B0B00BD96B1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3720455-F8E9-43B8-88AC-B0B00BD96B1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3720455-F8E9-43B8-88AC-B0B00BD96B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3720455-F8E9-43B8-88AC-B0B00BD96B1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

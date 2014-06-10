@@ -1,4 +1,4 @@
-﻿module Game
+﻿module RPS.Game
 open System
 
 type Event = 
