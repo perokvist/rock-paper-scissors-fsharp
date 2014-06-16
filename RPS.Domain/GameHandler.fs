@@ -3,16 +3,19 @@
 open Microsoft.FSharp.Collections
 open Game
 
-let eventStore = [("a",[{GameCreatedEvent.playerName="per";name="stanley cup"} :> Event;{MoveMadeEvent.playerName="per";MoveMadeEvent.move=Move.Rock} :> Event])] |> Map.ofList
+let mutable eventStore = Map.empty
 
-let load store id = 
-    eventStore.[id]
+let load store aggregateId = 
+    if eventStore.ContainsKey aggregateId
+    then eventStore.[aggregateId]
+    else List.empty
 
-let save store commandId events =
-    ()
+let save store aggregateId events = 
+    eventStore <- Map.add aggregateId events eventStore
     
 let rehydrate events =
-    restoreState {creatorName="";creatorMove=Rock;gameState=NotStarted } events
+    List.foldBack applyEvent events {State.creatorName="";State.creatorMove=Rock;State.gameState=NotStarted }
+
 
 let persist store id f =
     load store id |> rehydrate |> f |> save store id

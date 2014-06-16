@@ -96,16 +96,11 @@ let makeMove (command:MakeMoveCommand) state : list<Event> =
          { GameEndedEvent.result = result; players = (state.creatorName, command.playerName) } ]
     |_ -> List.empty 
 
-let restoreState state (events:list<Event>) :State=
-    let step (evt:Event) (state:State) =
-        match evt with
+let applyEvent (evt:Event) (state:State) = 
+    match evt with
         | :? GameCreatedEvent as e ->
                 { gameState = GameState.Started; creatorName = e.playerName; creatorMove = state.creatorMove }
         | :? MoveMadeEvent as e when e.playerName = state.creatorName ->
                 { gameState = state.gameState; creatorName = state.creatorName; creatorMove = e.move }
         | :? GameEndedEvent as e -> { state with gameState = GameState.Ended }
         |_ -> state
-
-    List.foldBack step events state
-
-

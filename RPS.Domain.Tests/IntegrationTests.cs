@@ -7,8 +7,10 @@ namespace RPS.Domain.Tests
         [Fact]
         public void HandleCommand()
         {
-            //TODO - read state / projection
-            GameHandler.handle(new Game.MakeMoveCommand(Game.Move.Scissors, "olav", "a"));
+            var cmd = new Game.CreateGameCommand("per", Game.Move.Paper, "TestGame", "Game001");
+            GameHandler.handle(cmd);
+
+            Assert.False(GameHandler.eventStore.IsEmpty);
         }
     }
 }
