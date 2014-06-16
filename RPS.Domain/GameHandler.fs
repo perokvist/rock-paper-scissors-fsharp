@@ -3,6 +3,7 @@
 open Microsoft.FSharp.Collections
 open Game
 
+// Dummy mutable event store, to be replaced with real event store :D
 let mutable eventStore = Map.empty
 
 let load store aggregateId = 
@@ -10,15 +11,16 @@ let load store aggregateId =
     then eventStore.[aggregateId]
     else List.empty
 
-let save store aggregateId events = 
-    eventStore <- Map.add aggregateId events eventStore
+let append store aggregateId events = 
+    let oldList = load eventStore aggregateId
+    let newList = List.append oldList events
+    eventStore <- Map.add aggregateId newList eventStore
     
 let rehydrate events =
-    List.foldBack applyEvent events {State.creatorName="";State.creatorMove=Rock;State.gameState=NotStarted }
-
+    List.fold applyEvent {State.creatorName="";State.creatorMove=Move.Rock;State.gameState=NotStarted } events 
 
 let persist store id f =
-    load store id |> rehydrate |> f |> save store id
+    load store id |> rehydrate |> f |> append store id
 
 let apply = persist eventStore
 

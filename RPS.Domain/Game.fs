@@ -96,7 +96,7 @@ let makeMove (command:MakeMoveCommand) state : list<Event> =
          { GameEndedEvent.result = result; players = (state.creatorName, command.playerName) } ]
     |_ -> List.empty 
 
-let applyEvent (evt:Event) (state:State) = 
+let applyEvent (state:State) (evt:Event) = 
     match evt with
         | :? GameCreatedEvent as e ->
                 { gameState = GameState.Started; creatorName = e.playerName; creatorMove = state.creatorMove }

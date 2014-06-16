@@ -1,16 +1,32 @@
-﻿using Xunit;
+﻿using System.Linq;
+using Xunit;
 
 namespace RPS.Domain.Tests
 {
     public class IntegrationTests
     {
-        [Fact]
-        public void HandleCommand()
-        {
-            var cmd = new Game.CreateGameCommand("per", Game.Move.Paper, "TestGame", "Game001");
-            GameHandler.handle(cmd);
+        private const string GameId = "Game001";
 
-            Assert.False(GameHandler.eventStore.IsEmpty);
+        public IntegrationTests()
+        {
+            var player1 = new Game.CreateGameCommand("per", Game.Move.Paper, "TestGame", GameId);
+            var player2 = new Game.MakeMoveCommand(Game.Move.Scissors, "Christoffer", GameId);
+
+            GameHandler.handle(player1);
+            GameHandler.handle(player2);
+        }
+
+        [Fact]
+        public void BestPersonWins()
+        {
+            var end = GameHandler.eventStore[GameId].OfType<Game.GameEndedEvent>().Single();
+            Assert.True(end.result.IsPlayerTwoWin);
+        }
+
+        [Fact]
+        public void AllEventsAreRecorded()
+        {
+            Assert.Equal(4, GameHandler.eventStore[GameId].Count());
         }
     }
 }
