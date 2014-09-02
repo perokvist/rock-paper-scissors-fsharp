@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using System.Security.AccessControl;
+using Treefort.Commanding;
 using Xunit;
 
 namespace RPS.Domain.Tests
@@ -27,6 +29,10 @@ namespace RPS.Domain.Tests
         public void AllEventsAreRecorded()
         {
             Assert.Equal(4, GameHandler.eventStore[GameId].Count());
+
+            //TODO - read state / projection
+            //GameHandler.handle(new Commands.MakeMoveCommand(Common.Move.Scissors, "olav", "a"));
         }
     }
+
 }

@@ -40,13 +40,21 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
+    <Reference Include="Treefort">
+      <HintPath>..\packages\Treefort.0.2.1.24164\lib\net45\Treefort.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common.fs" />
+    <Compile Include="Commands.fs" />
+    <Compile Include="Events.fs" />
     <Compile Include="Game.fs" />
     <None Include="Script.fsx" />
     <Compile Include="GameHandler.fs" />
     <None Include="RPS.Domain.nuspec" />
     <Compile Include="AssemblyInfo.fs" />
+    <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>

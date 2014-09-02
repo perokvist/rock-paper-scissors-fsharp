@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Xunit;
 
 namespace RPS.Domain.Tests
@@ -9,17 +10,17 @@ namespace RPS.Domain.Tests
 
         public NotStartedGame()
         {
-            _state = new Game.State(Game.GameState.NotStarted, "creator", Game.Move.Rock);
+            _state = new Game.State(Game.GameState.NotStarted, "creator", Common.Move.Rock);
         }
 
         [Fact]
         public void ShouldReturnCorrectEvents() // :P
         {
-            var cmd = new Game.CreateGameCommand("per", Game.Move.Paper, "TestGame", "Game001");
+            var cmd = new Commands.CreateGameCommand("per", Common.Move.Paper, "TestGame", Guid.NewGuid(), Guid.NewGuid());
             var events = Game.createGame(cmd, _state);
 
-            Assert.True(events.OfType<Game.GameCreatedEvent>().Any());
-            Assert.True(events.OfType<Game.MoveMadeEvent>().Any());
+            Assert.True(events.OfType<Events.GameCreatedEvent>().Any());
+            Assert.True(events.OfType<Events.MoveMadeEvent>().Any());
         }
     }
 }
