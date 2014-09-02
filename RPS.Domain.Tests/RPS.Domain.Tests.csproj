@@ -40,9 +40,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Treefort, Version=0.2.1.24164, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Treefort, Version=0.2.11.22348, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Treefort.0.2.1.24164\lib\net45\Treefort.dll</HintPath>
+      <HintPath>..\packages\Treefort.0.2.11.22348\lib\net45\Treefort.dll</HintPath>
     </Reference>
     <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
